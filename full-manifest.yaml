@@ -3,6 +3,7 @@ apiVersion: v1 # Namespace
 kind: Namespace
 metadata:
   name: sock-shop
+
 ---
 apiVersion: apps/v1 # Deployment - Carts
 kind: Deployment
@@ -285,8 +286,9 @@ spec:
           runAsUser: 10001
           capabilities:
             drop:
-              - all
+            - all
           readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
         livenessProbe:
           httpGet:
             path: /
